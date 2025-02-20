@@ -5,7 +5,7 @@ A Blockchain and Twitter data pipeline that utilizes modern data science and eng
 ## Pipeline
 1. Ingests Blockchain and Twitter data using APIs
 2. Cleans and models data using DBT and Python on BigQuery
-3. Creates APIs using Python on Google Storage Buckets
+3. Creates APIs using DBT and Python on Google Storage Buckets
 4. Creates dashboard and visualization using Observable
 
 ## Content
