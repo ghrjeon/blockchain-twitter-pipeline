@@ -9,7 +9,7 @@ theme: dashboard
   <div class="text-gray-500" style="width: 92%;">
   The goal of this project is to demonstrate my analytical engineering skills, domain knowledge in Blockchain, 
   and ability to incorporate AI tools in data analysis. 
-  I am a PhD candidate in Economics looking for a role that will allow me to apply these skills and build with a team!
+  I am a PhD candidate in Economics looking for a role where I can apply these skills and build with a team!
   </div>
 </div>
 <br>
