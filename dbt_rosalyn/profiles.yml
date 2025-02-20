@@ -1,0 +1,11 @@
+rosalyn_proto:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      keyfile: "../google-keypair.json"
+      project: prototype-451312
+      dataset: Stage
+      location: US
+      threads: 1
