@@ -20,7 +20,7 @@ theme: dashboard
 - Data Visualization: Observabl.js, D3.js 
 - APIs: Flipside Crypto, SocialData, OpenAI
 
-Next steps: Convert the pipeline into incremental ingestion.
+Next steps: Convert the pipeline into incremental ingestion. Automate dag using GitHub Actions workflow or Airflow. 
 
 <br>
 
