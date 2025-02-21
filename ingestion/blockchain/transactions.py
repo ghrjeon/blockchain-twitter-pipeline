@@ -26,7 +26,7 @@ chain_tx = {
     'optimism': 'tx_hash',
     'arbitrum': 'tx_hash',
     # 'monad': 'tx_hash',
-    'polygon': 'tx_hash',
+    # 'polygon': 'tx_hash',
 }
 
 # Ingest Data from Flipside
