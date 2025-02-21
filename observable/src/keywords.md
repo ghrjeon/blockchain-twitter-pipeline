@@ -27,7 +27,7 @@ This dashboard provides insights into the most discussed topics across blockchai
 ### Methodology
 
 <div class="text-gray-500" style="width: 80%;">
-I collect tweets that mention each blockchain ecosystem, filtering for those with significant engagement. AI-driven analysis is applied to extract and summarize the key topics of discussion for each day. Please see <a href="https://github.com/roselin-s/obs_proto">Github</a> for details on filter configurations and the prompts used.
+I collect tweets that mention each blockchain ecosystem, filtering for those with significant engagement. AI-driven analysis is applied to extract and summarize the key topics of discussion for each day. Please see <a href="https://github.com/ghrjeon/blockchain-twitter-pipeline">Github</a> for details on filter configurations and the prompts used.
 </div>
 
 <br>

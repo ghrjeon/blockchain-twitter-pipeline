@@ -12,7 +12,7 @@ console.log(user_data)
 
 const colorConfig = {
   domain: ['ethereum', 'base', 'optimism', 'arbitrum'],
-  range: ['#9945FF','#28A0F0', '#FF0420', '#0052FF', ]
+  range: ['#9945FF','#28A0F0', '#FF0420', '#0052FF']
 };
 
 const date_length = user_data.filter(d => d.blockchain === "ethereum").length;
@@ -25,8 +25,8 @@ console.log(date_length)
 This dashboard reports users and transaction data across <b>Ethereum, Base, Optimism, and Arbitrum</b> since January 2025. 
 </div>
 
-<p style="font-size: 11px; width: 95%;"> 
-* Please note that the purpose of this dashboard is to demonstrate analytical engineering capabilities using independent DS/DE tools. Check out an example of a more comprehensive dashboarding for data insights using existing platforms here: <a href="https://dune.com/theano2247/me-and-tensor-market-analysis">https://dune.com/theano2247/me-and-tensor-market-analysis</a>. 
+<p style="font-size: 13px; width: 95%;"> 
+* Please note that this project focuses on my demonstrating analytical engineering skills building independent data pipelines. Check out additional examples of dashboarding for data insights using other platforms here <a href="https://dune.com/theano2247/me-and-tensor-market-analysis">https://dune.com/theano2247/me-and-tensor-market-analysis</a>! 
 </p>
 
 
@@ -61,6 +61,14 @@ Takeaways:
     <h2>Arbitrum </h2>
     <span class="big">${(transaction_data.filter(d => d.blockchain === "arbitrum").reduce((sum, d) => sum + d.transactions, 0) / date_length/ 1000000).toLocaleString("en-US", {maximumFractionDigits: 2})}M</span>
   </div>
+  <!-- <div class="card">
+    <h2>Monad </h2>
+    <span class="big">${(transaction_data.filter(d => d.blockchain === "monad").reduce((sum, d) => sum + d.transactions, 0) / date_length/ 1000000).toLocaleString("en-US", {maximumFractionDigits: 2})}M</span>
+  </div>
+  <div class="card">
+    <h2>Polygon </h2>
+    <span class="big">${(transaction_data.filter(d => d.blockchain === "polygon").reduce((sum, d) => sum + d.transactions, 0) / date_length/ 1000000).toLocaleString("en-US", {maximumFractionDigits: 2})}M</span>
+  </div> -->
 </div>
 
 ```js
@@ -138,6 +146,14 @@ function transactionTimeline(transaction_data, {width} = {}) {
     <h2>Arbitrum </h2>
     <span class="big">${(user_data.filter(d => d.blockchain === "arbitrum").reduce((sum, d) => sum + d.users, 0) / date_length/ 1000).toLocaleString("en-US", {maximumFractionDigits: 0})}K</span>
   </div>
+  <!-- <div class="card">
+    <h2>Monad </h2>
+    <span class="big">${(user_data.filter(d => d.blockchain === "monad").reduce((sum, d) => sum + d.users, 0) / date_length/ 1000).toLocaleString("en-US", {maximumFractionDigits: 0})}K</span>
+  </div>
+  <div class="card">
+    <h2>Polygon </h2>
+    <span class="big">${(user_data.filter(d => d.blockchain === "polygon").reduce((sum, d) => sum + d.users, 0) / date_length/ 1000).toLocaleString("en-US", {maximumFractionDigits: 0})}K</span>
+  </div> -->
 </div>
 
 <br>
