@@ -21,24 +21,42 @@ client = bigquery.Client(credentials=credentials, project='prototype-451312')
 
 # Map chains to their corresponding user fields
 chain_tx = {
-    'ethereum': 'from_address',
-    'base': 'from_address',
-    'optimism': 'from_address',
-    'arbitrum': 'from_address',
-    # 'monad': 'from_address',
-    'polygon': 'from_address',
+    'ethereum': ['from_address','to_address'],
+    'base': ['from_address','to_address'],
+    'optimism': ['from_address','to_address'],
+    'arbitrum': ['from_address','to_address'],
+    # 'monad': ['from_address','to_address'],
+    # 'polygon': ['from_address','to_address'],
 }
 
 # Ingest Data from Flipside
 for chain in chain_tx:
     sql = f"""
-    SELECT 
-    date_trunc('day', block_timestamp) as date,
-        count(distinct {chain_tx[chain]}) as user_count
-      FROM {chain}.core.fact_transactions 
-    WHERE block_timestamp >= date('2025-01-01')
-    GROUP BY 1
-    ORDER BY 1
+        WITH contracts AS (
+            SELECT DISTINCT address FROM {chain}.core.dim_contracts
+        ),
+        user_counts AS (
+            SELECT 
+                date_trunc('day', block_timestamp) AS date,
+                COUNT(DISTINCT user_address) AS user_count
+            FROM (
+                SELECT {chain_tx[chain][0]} AS user_address, block_timestamp
+                FROM {chain}.core.fact_transactions 
+                WHERE block_timestamp >= DATE('2025-02-19')
+
+                UNION ALL
+
+                SELECT {chain_tx[chain][1]} AS user_address, block_timestamp
+                FROM {chain}.core.fact_transactions 
+                WHERE block_timestamp >= DATE('2025-02-19')
+            ) combined 
+            LEFT JOIN contracts c ON combined.user_address = c.address
+            WHERE c.address IS NULL  -- Exclude contract addresses
+            GROUP BY 1
+        )
+        SELECT 
+            date, user_count
+        FROM user_counts
     """
 
     # Run the query against Flipside's query engine and await the results
