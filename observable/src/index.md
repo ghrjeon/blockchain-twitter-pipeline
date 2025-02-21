@@ -26,7 +26,7 @@ Next steps: Convert the pipeline into incremental ingestion. Automate dag using 
 
 <div class="grid grid-cols-2">
   <div class="card">
-    <a href="https://github.com/ghrjeon/blockchain-twitter"><code> Github to this project</code><span style="display: inline-block; margin-left: 0.25rem;">↗︎</span></a>
+    <a href="https://github.com/ghrjeon/blockchain-twitter-pipeline"><code> Github to this project</code><span style="display: inline-block; margin-left: 0.25rem;">↗︎</span></a>
   </div>
   <div class="card">
     <a href="https://www.linkedin.com/in/ghrjeon"><code> Rosalyn's Linkedin</code><span style="display: inline-block; margin-left: 0.25rem;">↗︎</span></a>
