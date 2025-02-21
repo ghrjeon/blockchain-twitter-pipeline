@@ -4,9 +4,9 @@ import subprocess
 python_scripts = [
     "blockchain/transactions.py", 
     "blockchain/users.py",
-    "twitter/scrape.py",
-    "twitter/clean.py",
-    "twitter/infer.py",
+    # "twitter/scrape.py",
+    # "twitter/clean.py",
+    # "twitter/infer.py",
 ]
 
 # Run all scripts 

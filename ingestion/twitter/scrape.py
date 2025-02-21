@@ -50,6 +50,7 @@ def fetch_all_tweets(since_date, until_date, ecosystem, likes):
 
     encoded_ecosystem = urllib.parse.quote(ecosystem)
 
+    # TWITTER FILTER CONFIGURATIONS 
     query = f"{encoded_ecosystem}%20min_faves%3A{likes}%20until%3A{until_date}%20since%3A{since_date}%20-filter%3Areplies%20-filter%3Aretweets%20-filter%3Aquotes%20lang%3Aen"
 
     while True:

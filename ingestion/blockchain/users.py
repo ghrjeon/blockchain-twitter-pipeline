@@ -25,6 +25,8 @@ chain_tx = {
     'base': 'from_address',
     'optimism': 'from_address',
     'arbitrum': 'from_address',
+    # 'monad': 'from_address',
+    'polygon': 'from_address',
 }
 
 # Ingest Data from Flipside
