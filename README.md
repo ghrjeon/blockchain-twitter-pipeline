@@ -36,7 +36,7 @@ APIs: Flipside Crypto, SocialData, OpenAI <br>
       │   │   ├── transactions.py # Transactions ingestion   
       │   │   ├── users.py        # Users ingestion
       │   ├── twitter/            # Twitter data ingestion using SocialData
-      │   │   ├── scrape.py       # Scrape with filter configurations
+      │   │   ├── scrape.py       # Ingest with filter configurations
       │   │   ├── clean.py        # Clean raw data
       │   │   └── infer.py        # Infer keywords with OpenAI
       │   └── ingest.py           # Script to run all ingestion processes
