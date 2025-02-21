@@ -27,6 +27,10 @@ APIs: Flipside Crypto, SocialData, OpenAI <br>
 
       .
       ├── dbt_rosalyn/            # DBT for data modeling using BigQuery
+      │   ├── macros/             # Macros 
+      │   └── models/             # Models
+      │       ├── blockchain/     # Blockchain models   
+      │       └── twitter/        # Twitter models
       ├── ingestion/              # Ingestion scripts
       │   ├── blockchain/         # Blockchain data ingestion using Flipside Crypto
       │   │   ├── transactions.py # Transactions ingestion   
