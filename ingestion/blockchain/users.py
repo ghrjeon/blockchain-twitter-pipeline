@@ -43,7 +43,6 @@ for chain in chain_tx:
                 SELECT {chain_tx[chain][0]} AS user_address, block_timestamp
                 FROM {chain}.core.fact_transactions 
                 WHERE block_timestamp >= DATE('2025-02-19')
-
                 UNION ALL
 
                 SELECT {chain_tx[chain][1]} AS user_address, block_timestamp
