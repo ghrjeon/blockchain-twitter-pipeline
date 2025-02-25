@@ -7,7 +7,7 @@ python_scripts = [
     "twitter/scrape.py",
     "twitter/clean.py",
     "twitter/infer.py",
-    # "blockchain/test.py",
+    "blockchain/flipside_test.py",
 ]
 
 # Run all scripts 
