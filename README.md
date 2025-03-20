@@ -1,24 +1,27 @@
 # Blockchain Twitter Analytics
 
-A Blockchain and Twitter data pipeline that utilizes modern data science and engineering tools.
+Hello! Welcome to Rosalyn's Blockchain Twitter Analytics, designed to provide insights into daily blockchain trends and key topics discussed across crypto Twitter utilizing modern data science and engineering tools.
 
-## Pipeline
-1. Ingests Blockchain and Twitter data using APIs
-2. Cleans and models data using DBT and Python on BigQuery
-3. Creates APIs using DBT and Python on Google Cloud Buckets
-4. Creates dashboard and visualization using Observable
+https://rosalyn.observablehq.cloud/rosalyn-analytics/
 
 ## Content
-- Blockchain Dashboard: Reports users and transaction data across blockchain ecosystems. 
 - Keywords Dashboard: Reports daily keywords in crypto twitter across the ecosystem.
-- Tweets Dashboard: Provides a list of top tweets with high attention. 
+- Tweets Dashboard: Provides a list of top tweets with high attention.
+- Blockchain Dashboard: Reports users and transaction data across blockchain ecosystems. 
+
+## Pipeline
+1. Ingests Blockchain Twitter data using APIs
+2. Infers keywords and trends using OpenAI LLM
+3. Cleans and models data using DBT and Python on BigQuery
+4. Creates APIs on Google Cloud Buckets
+5. Creates dashboards using Observable
 
 ## Next steps
 - Convert pipeline into incremental ingestion.
 - Automate dag using GitHub Actions workflow or Airflow
 
 ## Stacks used
-Data Warehousing: BigQuery, Google Cloud Buckets <br>
+Data Lake/Warehousing: BigQuery, Google Cloud Buckets <br>
 Data Modeling: DTB, Python <br>
 Data Visualization: Observabl.js, D3.js <br>
 APIs: Flipside Crypto, SocialData, OpenAI <br>
