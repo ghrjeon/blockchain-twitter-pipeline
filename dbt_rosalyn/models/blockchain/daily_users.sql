@@ -49,6 +49,13 @@ arbitrum as (
         user_count as users,
         'arbitrum' as blockchain
     from `prototype-451312.Raw.arbitrum_daily_users`
+),
+polygon as (
+    select 
+        date,
+        user_count as users,
+        'polygon' as blockchain
+    from `prototype-451312.Raw.polygon_daily_users`
 )
 
-{{ union_date(['ethereum', 'base', 'optimism', 'arbitrum'], ascending=true) }}
+{{ union_date(['ethereum', 'base', 'optimism', 'arbitrum', 'polygon'], ascending=true) }}
