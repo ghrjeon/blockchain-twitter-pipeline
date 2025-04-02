@@ -26,7 +26,7 @@ chain_tx = {
     'optimism': ['from_address','to_address'],
     'arbitrum': ['from_address','to_address'],
     # 'monad': ['from_address','to_address'],
-    # 'polygon': ['from_address','to_address'],
+    'polygon': ['from_address','to_address'],
 }
 
 # Ingest Data from Flipside
@@ -42,12 +42,12 @@ for chain in chain_tx:
             FROM (
                 SELECT {chain_tx[chain][0]} AS user_address, block_timestamp
                 FROM {chain}.core.fact_transactions 
-                WHERE block_timestamp >= DATE('2025-02-19')
+                WHERE block_timestamp >= DATE('2025-01-01')
                 UNION ALL
 
                 SELECT {chain_tx[chain][1]} AS user_address, block_timestamp
                 FROM {chain}.core.fact_transactions 
-                WHERE block_timestamp >= DATE('2025-02-19')
+                WHERE block_timestamp >= DATE('2025-01-01')
             ) combined 
             LEFT JOIN contracts c ON combined.user_address = c.address
             WHERE c.address IS NULL  -- Exclude contract addresses
