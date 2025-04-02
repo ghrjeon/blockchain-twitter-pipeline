@@ -8,6 +8,19 @@ import os
 # Load environment variables
 load_dotenv()
 
+# from flipside import Flipside
+# flipside_api_key = '19304979-7a77-478d-91c2-75397c86fde9'
+# flipside = Flipside(flipside_api_key, "https://api-v2.flipsidecrypto.xyz")
+# sql = f"""select platform_name, count(*) as sales_count 
+# from ethereum.nft.ez_nft_sales 
+# where block_timestamp > current_date - interval '30 days' 
+# group by platform_name 
+# order by sales_count desc
+# limit 8"""
+# query_result_set = flipside.query(sql)
+# print(query_result_set)
+
+
 # Load Flipside API Key and Initialize Flipside Client
 flipside_api_key = os.getenv('FLIPSIDE_API_KEY')
 flipside = Flipside(flipside_api_key, "https://api-v2.flipsidecrypto.xyz")
