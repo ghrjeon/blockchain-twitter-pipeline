@@ -5,25 +5,28 @@ theme: dashboard
 
 <div class="hero">
   <h1>Welcome to Rosalyn's Blockchain and Twitter Analytics Dashboard!</h1>
-
-  <div class="text-gray-500" style="width: 92%;">
-  The goal of this project is to demonstrate my analytical engineering skills, domain knowledge in Blockchain, 
-  and ability to incorporate AI tools in data analysis. 
-  I am a PhD candidate in Economics looking for a role where I can apply these skills and build with a team!
-  </div>
 </div>
+
+<div class="content">
+<h3> Content </h3>
+📌 Keywords Dashboard: Reports daily keywords in crypto twitter across the ecosystem. <br>
+📌 Tweets Dashboard: Provides a list of top tweets with high attention. <br>
+📌 Blockchain Dashboard: Reports users and transaction data across blockchain ecosystems. <br>
+</div> 
 <br>
 
-### Stacks used in this project
-- Data Warehousing: BigQuery, Google Cloud Buckets
-- Data Modeling: DTB, Python
-- Data Visualization: Observabl.js, D3.js 
-- APIs: Flipside Crypto, SocialData, OpenAI
-
-Next steps: 
-- Convert the pipeline into incremental ingestion. 
-- Automate dag using GitHub Actions workflow or Airflow. 
-
+<div class="content">
+<h3> Stacks used in this project </h3>
+- Data Lakehouse/Warehousing: BigQuery, Google Cloud Buckets <br>
+- Data Modeling: DTB, Python <br>
+- Data Visualization: Observable.js, D3.js  <br>
+- APIs: Flipside Crypto, SocialData, OpenAI <br>
+</div>
+<br>
+<div class="content">
+<h3>Next steps:  </h3>
+- Convert the pipeline into incremental ingestion. <br>
+- Automate dag using GitHub Actions workflow or Airflow. <br>
 <br>
 
 <div class="grid grid-cols-2">
@@ -64,14 +67,10 @@ Next steps:
   background-clip: text;
 }
 
-.hero h2 {
-  margin: 0;
-  max-width: 50%;
-  font-size: 20px;
-  font-style: initial;
-  font-weight: 500;
-  line-height: 1.5;
-  color: var(--theme-foreground-muted);
+.content {
+  color:rgb(12, 31, 50);
+  line-height: 1.6;
+  font-size: 1.1rem;
 }
 
 

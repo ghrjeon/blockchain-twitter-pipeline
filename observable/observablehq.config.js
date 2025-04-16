@@ -8,9 +8,9 @@ export default {
   // lets you organize them into sections and have unlisted pages.
   pages: [
     {name: "Home", path: "/"},
-    {name: "Blockchain Dashboard", path: "/blockchain"},
     {name: "Keywords Dashboard", path: "/keywords"},
     {name: "Tweets Dashboard", path: "/tweets"},
+    // {name: "Blockchain Dashboard", path: "/blockchain"},
   ],
 
   // Content to add to the head of the page, e.g. for a favicon:

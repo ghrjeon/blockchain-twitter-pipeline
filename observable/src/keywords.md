@@ -20,17 +20,24 @@ console.log(keywords_data)
 # Blockchain Ecosystem Twitter Keywords 🔗 
 
 <div class="text-gray-500" style="width: 80%;">
-This dashboard provides insights into the most discussed topics across blockchain ecosystems, highlighting key trends and words. This is a work in progress with the aims of optimizing information search, extraction, and consumption. 
+This dashboard provides insights into the most discussed topics across blockchain ecosystems, highlighting daily key trends and words. It offers a quick and comprehensive overview of the ecosystem, enabling users to stay informed at a glance.
 </div>
 <br>
 
 ### Methodology
 
 <div class="text-gray-500" style="width: 80%;">
-I collect tweets that mention each blockchain ecosystem, filtering for those with significant engagement. AI-driven analysis is applied to extract and summarize the key topics of discussion for each day. Please see <a href="https://github.com/ghrjeon/blockchain-twitter-pipeline">Github</a> for details on filter configurations and the prompts used.
+I collect tweets that mention each blockchain ecosystem, filtering for those with significant engagement. LLM is applied to extract and summarize the key topics of discussion for each day. Please see <a href="https://github.com/ghrjeon/blockchain-twitter-pipeline">Github</a> for details on filter configurations and the prompts used.
 </div>
 
 <br>
+<style>
+  .observablehq--table .observablehq--index-column,
+  .observablehq--table tbody tr td:first-child,
+  .observablehq--table thead tr th:first-child {
+    display: none !important;
+  }
+</style>
 
 ## Bitcoin
 ```js
@@ -38,12 +45,12 @@ const bitcoin_table = Inputs.table(bitcoin_data, {
   width: {
     date: "15%",
     ecosystem: "15%",
-    keywords: "70%"
+    keywords: "70%",
   },
   format: {
     keywords: d => htl.html`<span style="white-space:normal">${d}`
   },
-  height: 300
+  height: 300,
 });
 display(bitcoin_table);
 ```
@@ -105,7 +112,7 @@ const nft_table = Inputs.table(nft_data, {
   format: {
     keywords: d => htl.html`<span style="white-space:normal">${d}`
   },
-  height: 300
+  height: 300,
 });
 display(nft_table);
 ```

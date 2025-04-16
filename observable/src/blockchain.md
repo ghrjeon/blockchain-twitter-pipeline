@@ -11,8 +11,8 @@ const txn_user_data = await FileAttachment("data/txn_user_data.csv").csv({typed:
 console.log(user_data)
 
 const colorConfig = {
-  domain: ['ethereum', 'base', 'optimism', 'arbitrum'],
-  range: ['#9945FF','#28A0F0', '#FF0420', '#0052FF']
+  domain: ['ethereum', 'base', 'optimism', 'arbitrum', 'polygon'],
+  range: ['#D3D3D3','#28A0F0', '#FF0420', '#0052FF', '#9945FF']
 };
 
 const date_length = user_data.filter(d => d.blockchain === "ethereum").length;
@@ -22,21 +22,16 @@ console.log(date_length)
 # Blockchain Transactions and Users 🔗
 
 <div class="text-gray-500" style="width: 90%;">
-This dashboard reports users and transaction data across <b>Ethereum, Base, Optimism, and Arbitrum</b> since January 2025. 
+This dashboard reports users and transaction data across Ethereum, Base, Optimism, Arbitrum, and Polygon since January 2025. 
 </div>
 
-<p style="font-size: 13px; width: 95%;"> 
-* Please note that this project focuses on my demonstrating analytical engineering skills building independent data pipelines. Check out additional examples of dashboarding for data insights using other platforms here <a href="https://dune.com/theano2247/me-and-tensor-market-analysis">https://dune.com/theano2247/me-and-tensor-market-analysis</a>! 
-</p>
-
-
 Takeaways:
-- Ecosystem transactions have been trending down since January, from aournd 15M to 12M total transactions.
-- Base has the highest number of daily transactions averaging around 9M, as well as active addresses averaging around 1M.
-- Ethereum has a steady transactions per user while other ecosystems have more variability in numbers, ranging from around 6 to 12 txns per user.
-- Optimism has the highest number of transactions per address.
-
-
+- Transactions have been trending down since January (20M -> 12M).
+- Base has the highest number of transactions averaging around 9M per day, taking around 54% of transaction share</b>.
+- Polygon has strong market presence with 20% of transaction share.
+- Base has the highest number of active addresses averaging around 1M.
+- Ethereum has a steady rate of ~3.5 transactions per day per user.
+- L2s have more variability, ranging from around 6 to 12 daily txns per user.
 
 <br>
 
@@ -44,7 +39,7 @@ Takeaways:
 <span class="text-sm text-gray-500"> Boxes show daily average transactions across ${date_length} days.</span>
 
 <!-- Daily Transactions -->
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-3">
   <div class="card">
     <h2>Ethereum </h2>
     <span class="big">${(transaction_data.filter(d => d.blockchain === "ethereum").reduce((sum, d) => sum + d.transactions, 0) / date_length / 1000000).toLocaleString("en-US", {maximumFractionDigits: 2})}M</span>
@@ -64,11 +59,11 @@ Takeaways:
   <!-- <div class="card">
     <h2>Monad </h2>
     <span class="big">${(transaction_data.filter(d => d.blockchain === "monad").reduce((sum, d) => sum + d.transactions, 0) / date_length/ 1000000).toLocaleString("en-US", {maximumFractionDigits: 2})}M</span>
-  </div>
+  </div> -->
   <div class="card">
     <h2>Polygon </h2>
     <span class="big">${(transaction_data.filter(d => d.blockchain === "polygon").reduce((sum, d) => sum + d.transactions, 0) / date_length/ 1000000).toLocaleString("en-US", {maximumFractionDigits: 2})}M</span>
-  </div> -->
+  </div>
 </div>
 
 ```js
@@ -104,7 +99,7 @@ function transactionTimeline(transaction_data, {width} = {}) {
         fill: d => (d.blockchain || "").toLowerCase(),
         tip: {
           format: {
-            y: (y) => (y / 1000000).toLocaleString("en-US", {
+            y: (y) => (y).toLocaleString("en-US", {
               style: "decimal",
               maximumFractionDigits: 2
             }) + "M"
@@ -123,13 +118,84 @@ function transactionTimeline(transaction_data, {width} = {}) {
   </div>
 </div>
 
-<br>
+
+```js
+import * as Highcharts from 'npm:highcharts';
+
+function createPieChart(transaction_data) {
+  // Calculate total transactions per blockchain
+  const totals = transaction_data.reduce((acc, curr) => {
+    if (!acc[curr.blockchain]) {
+      acc[curr.blockchain] = 0;
+    }
+    acc[curr.blockchain] += curr.transactions;
+    return acc;
+  }, {});
+
+  // Convert to array format needed for Highcharts
+  const pieData = Object.entries(totals).map(([blockchain, value]) => ({
+    name: blockchain.charAt(0).toUpperCase() + blockchain.slice(1),
+    y: value,
+    color: colorConfig.range[colorConfig.domain.indexOf(blockchain.toLowerCase())]
+  }));
+
+  const container = document.createElement('div');
+  
+  Highcharts.default.chart(container, {
+    chart: {
+      type: 'pie',
+      width: width || 800,
+      height: 400,
+      style: {
+        maxWidth: '100%',
+      }
+    },
+    title: {
+      text: 'Transaction Distribution (since January 2025)',
+      style: {
+        fontSize: '18px',
+        fontWeight: 500,
+        font: 'sans-serif'
+      }
+    },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: true,
+          format: '{point.name}: {point.percentage:.1f}%',
+          style: {
+            fontSize: '12px',
+            fontWeight: 300,
+            font: 'sans-serif'
+          }
+        }
+      }
+    },
+    series: [{
+      name: 'Transactions',
+      data: pieData
+    }]
+  });
+
+  return container;
+}
+```
+
+<div class="grid grid-cols-1">
+  <div class="card">
+    ${createPieChart(transaction_data)}
+  </div>
+</div>
+
+
 
 ## Daily Active Addresses  
 <span class="text-sm text-gray-500"> Boxes show daily average active addresses across ${date_length} days.</span>
 
 <!-- Daily Active Addresses -->
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-3">
   <div class="card">
     <h2>Ethereum </h2>
     <span class="big">${(user_data.filter(d => d.blockchain === "ethereum").reduce((sum, d) => sum + d.users, 0) / date_length/ 1000).toLocaleString("en-US", {maximumFractionDigits: 0})}K</span>
@@ -149,17 +215,17 @@ function transactionTimeline(transaction_data, {width} = {}) {
   <!-- <div class="card">
     <h2>Monad </h2>
     <span class="big">${(user_data.filter(d => d.blockchain === "monad").reduce((sum, d) => sum + d.users, 0) / date_length/ 1000).toLocaleString("en-US", {maximumFractionDigits: 0})}K</span>
-  </div>
+  </div> -->
   <div class="card">
     <h2>Polygon </h2>
     <span class="big">${(user_data.filter(d => d.blockchain === "polygon").reduce((sum, d) => sum + d.users, 0) / date_length/ 1000).toLocaleString("en-US", {maximumFractionDigits: 0})}K</span>
-  </div> -->
+  </div>
 </div>
 
 <br>
 
 ```js
-function userTimeline(user_data, {width} = {}) {
+function userTimeline(user_data) {
   if (!user_data || user_data.length === 0) {
     console.error("No data available for plotting");
     return;
@@ -185,7 +251,7 @@ function userTimeline(user_data, {width} = {}) {
         x: "date",
         y: "users",
         stroke: d => (d.blockchain || "").toLowerCase(),
-        strokeWidth: 2,
+        strokeWidth: 1,
         tip: {
           format: {
             y: (y) => (y / 1000).toLocaleString("en-US", {
@@ -202,7 +268,73 @@ function userTimeline(user_data, {width} = {}) {
 ```
 <div class="grid grid-cols-1">
   <div class="card">
-    ${userTimeline(user_data, {width: 1200})}
+    ${userTimeline(user_data)}
+  </div>
+</div>
+
+
+```js
+function createUserPieChart(user_data) {
+  // Calculate total users per blockchain
+  const totals = user_data.reduce((acc, curr) => {
+    if (!acc[curr.blockchain]) {
+      acc[curr.blockchain] = 0;
+    }
+    acc[curr.blockchain] += curr.users;
+    return acc;
+  }, {});
+
+  // Convert to array format needed for Highcharts
+  const pieData = Object.entries(totals).map(([blockchain, value]) => ({
+    name: blockchain.charAt(0).toUpperCase() + blockchain.slice(1),
+    y: value,
+    color: colorConfig.range[colorConfig.domain.indexOf(blockchain.toLowerCase())]
+  }));
+
+  const container = document.createElement('div');
+  
+  Highcharts.default.chart(container, {
+    chart: {
+      type: 'pie',
+      width: width || 1200,
+      height: 400
+    },
+    title: {
+      text: 'User Distribution (since January 2025)',
+      style: {
+        fontSize: '18px',
+        fontWeight: 500,
+        font: 'sans-serif'
+      }
+    },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: true,
+          format: '{point.name}: {point.percentage:.1f}%',
+          style: {
+            fontSize: '12px',
+            fontWeight: 300,
+            font: 'sans-serif'
+          }
+        }
+      }
+    },
+    series: [{
+      name: 'Users',
+      data: pieData
+    }]
+  });
+
+  return container;
+}
+```
+
+<div class="grid grid-cols-1">
+  <div class="card">
+    ${createUserPieChart(user_data)}
   </div>
 </div>
 
@@ -213,7 +345,7 @@ function userTimeline(user_data, {width} = {}) {
 <span class="text-sm text-gray-500"> Boxes show daily average transactions per user across ${date_length} days.</span>
 
 <!-- Daily Transactions per User -->
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-3">
   <div class="card">
     <h2>Ethereum </h2>
     <span class="big">${(txn_user_data.filter(d => d.blockchain === "ethereum").reduce((sum, d) => sum + d.txn_per_user, 0) / date_length).toLocaleString("en-US", {maximumFractionDigits: 0})}</span>
@@ -229,6 +361,10 @@ function userTimeline(user_data, {width} = {}) {
   <div class="card">
     <h2>Arbitrum </h2>
     <span class="big">${(txn_user_data.filter(d => d.blockchain === "arbitrum").reduce((sum, d) => sum + d.txn_per_user, 0) / date_length).toLocaleString("en-US", {maximumFractionDigits: 0})}</span>
+  </div>
+  <div class="card">
+    <h2>Polygon </h2>
+    <span class="big">${(txn_user_data.filter(d => d.blockchain === "polygon").reduce((sum, d) => sum + d.txn_per_user, 0) / date_length).toLocaleString("en-US", {maximumFractionDigits: 0})}</span>
   </div>
 </div>
 
@@ -259,7 +395,7 @@ function txn_user_timeline(txn_user_data, {width} = {}) {
         x: "date",
         y: "txn_per_user",
         stroke: d => (d.blockchain || "").toLowerCase(),
-        strokeWidth: 2,
+        strokeWidth: 1,
         tip: {
           format: {
             y: (y) => (y ).toLocaleString("en-US", {
