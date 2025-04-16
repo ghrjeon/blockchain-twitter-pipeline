@@ -44,12 +44,12 @@ console.log(formatted_data)
 
 # Blockchain Ecosystem Notable Tweets 🔗
 
-<div class="text-gray-500" style="width: 80%;">
-This dashboard provides access to notable tweets collected in the past week across blockchain ecosystems. It highlights tweets with significant engagement, particularly those with high likes and bookmark counts, to surface valuable content that has gained public attention. In addition to the keywords dashboard, which provides an overview of news and trends, this dashboard aims to identify tweets that are worth reading based on user interest.
-</div>
+<div class="text-gray-500" style="width: 90%;">
+This dashboard provides access to notable tweets collected in the past week across blockchain ecosystems. It highlights tweets with significant attention and engagement, based on likes, bookmarks, and retweets. 
 <br>
 <div style="font-size: 13px; width: 95%;">
 ** it takes a few seconds to load! **
+<br>
 </div>
 
 ```js

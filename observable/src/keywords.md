@@ -20,14 +20,14 @@ console.log(keywords_data)
 # Blockchain Ecosystem Twitter Keywords 🔗 
 
 <div class="text-gray-500" style="width: 80%;">
-This dashboard provides insights into the most discussed topics across blockchain ecosystems, highlighting daily key trends and words. It offers a quick and comprehensive overview of the ecosystem, enabling users to stay informed at a glance.
+This dashboard provides insights into the most discussed topics across blockchain ecosystems, highlighting daily key trends. It offers a quick and comprehensive overview of the ecosystem, enabling users to stay informed at a glance.
 </div>
 <br>
 
 ### Methodology
 
 <div class="text-gray-500" style="width: 80%;">
-I collect tweets that mention each blockchain ecosystem, filtering for those with significant engagement. LLM is applied to extract and summarize the key topics of discussion for each day. Please see <a href="https://github.com/ghrjeon/blockchain-twitter-pipeline">Github</a> for details on filter configurations and the prompts used.
+Tweets that mention each blockchain ecosystem are collected, filtering for those with significant engagement. LLM is applied to extract and summarize the key topics of discussion for each day. See <a href="https://github.com/ghrjeon/blockchain-twitter-pipeline">Github</a> for details on filter configurations and the prompts used.
 </div>
 
 <br>
