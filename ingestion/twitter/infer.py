@@ -14,13 +14,13 @@ credentials = service_account.Credentials.from_service_account_file(key_path)
 bq_client = bigquery.Client(credentials=credentials, project='prototype-451312')
 
 # Initialize OpenAI client
+# client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 ai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-
-chains = ['ethereum', 'solana', "starknet", "avax",'bitcoin', 'defi', "nft", "depin"]
+chains = ['ethereum', 'solana', 'bitcoin', 'defi', "nft", "depin"]
     
 for chain in chains:
-    # Example query
+    # Query to get tweets
     query = f"""
         SELECT date, 
         text
@@ -41,12 +41,12 @@ for chain in chains:
         
         # Create prompt with tweets
         keywords_prompt = f"""
-        Please analyze the following tweets from {date} and identify 5 to 10 non-generic, 
+        Analyze the following tweets from {date} and identify 5 to 10 non-generic, 
         short keywords or phrases (no longer than three words) that describe the main 
         topics of discussion. 
 
         Each item must be distinct, avoiding duplicates, and must avoid overly generic 
-        terms and topics (e.g., “crypto,” “news”, "blockchain ecosystem", etc.).
+        terms and topics (e.g., "crypto," "news", "blockchain ecosystem", etc.).
 
         Output exactly 5 to 10 items, separated by commas, with no additional commentary or 
         formatting.

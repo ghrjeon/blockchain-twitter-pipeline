@@ -103,7 +103,7 @@ def get_tweets(query, cursor=None):
 if __name__ == "__main__":
     # Set the end date and start date
     end_date = datetime.now().date()
-    original_start_date = end_date - timedelta(days=14)
+    original_start_date = end_date - timedelta(days=7)
 
     # Configure the number of likes for each ecosystem
     ecosystem_config = {

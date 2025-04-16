@@ -39,7 +39,7 @@ credentials = service_account.Credentials.from_service_account_file(key_path)
 client = bigquery.Client(credentials=credentials, project='prototype-451312')
 
 
-chains = ['ethereum', 'solana', "starknet", "avax",'bitcoin', 'defi', "nft","depin"]
+chains = ['ethereum', 'solana', 'bitcoin', 'defi', "nft","depin"]
 
 for chain in chains:
     df_all = pd.DataFrame()
