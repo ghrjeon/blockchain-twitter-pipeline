@@ -11,16 +11,17 @@ theme: dashboard
 <h3> Content </h3>
 📌 Keywords Dashboard: Reports daily keywords in crypto twitter across the ecosystem. <br>
 📌 Tweets Dashboard: Provides a list of top tweets with high attention. <br>
-📌 Blockchain Dashboard: Reports users and transaction data across blockchain ecosystems. <br>
+<!-- 📌 Blockchain Dashboard: Reports users and transaction data across blockchain ecosystems. <br> -->
 </div> 
 <br>
 
 <div class="content">
 <h3> Stacks used in this project </h3>
-- Data Lakehouse/Warehousing: BigQuery, Google Cloud Buckets <br>
+- Data Lake/Warehouse: BigQuery, Google Cloud Buckets <br>
 - Data Modeling: DTB, Python <br>
 - Data Visualization: Observable.js, D3.js  <br>
-- APIs: Flipside Crypto, SocialData, OpenAI <br>
+- APIs: SocialData, OpenAI <br>
+<!-- - APIs: Flipside Crypto, SocialData, OpenAI <br> -->
 </div>
 <br>
 <div class="content">
