@@ -2,9 +2,9 @@ import subprocess
 
 # Run all scripts in order for ingestion
 python_scripts = [
-    "blockchain/transactions.py", 
-    "blockchain/users.py",
-    "twitter/scrape.py",
+    # "blockchain/transactions.py", 
+    # "blockchain/users.py",
+    "twitter/fetch.py",
     "twitter/clean.py",
     "twitter/infer.py",
     # "blockchain/flipside_test.py",
