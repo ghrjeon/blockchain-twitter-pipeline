@@ -25,9 +25,9 @@ theme: dashboard
 </div>
 <br>
 <div class="content">
-<h3>Next steps:  </h3>
-- Convert the pipeline into incremental ingestion. <br>
-- Automate dag using GitHub Actions workflow or Airflow. <br>
+<h3>Next Steps:  </h3>
+- Convert to incremental pipeline. <br>
+- Automate dag using GitHub Actions. <br>
 <br>
 
 <div class="grid grid-cols-2">
